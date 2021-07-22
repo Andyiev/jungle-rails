@@ -3,6 +3,37 @@
   <header class="page-header">
     <h1>Order #<%= @order.id %></h1>
   </header>
+  <table class="table table-bordered">
+  <thead>
+    <tr>
+      <th colspan="2">Product</th>
+      <th>Unit Price</th>
+      <th>Quantity</th>
+      <th>Price</th>
+    </tr>
+  </thead>
+  <tbody>
+   <%= render @order.line_items %>
+
+   <%# Here are some comments
+    # Rails will take each of line_item in line_items and will render it with
+    # line_item.html.erb from /views/line_items folder 
+    # %>
+  
+  </tbody>
+  <tfoot>
+    <tr>
+      <th colspan="4">
+        TOTAL:
+      </th>
+      <th>
+        <%= humanized_money_with_symbol @order.total %>
+      </th>
+    </tr>
+  </tfoot>
+</table>
+
+
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order!</h4>

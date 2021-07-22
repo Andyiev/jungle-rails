@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   resource :cart, only: [:show] do
     post   :add_item
     post   :remove_item
+
   end
+
+  get "about", to: "about#index"
 
   resources :orders, only: [:create, :show]
 
@@ -16,6 +19,8 @@ Rails.application.routes.draw do
     root to: 'dashboard#show'
     resources :products, except: [:edit, :update, :show]
   end
+
+  
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
